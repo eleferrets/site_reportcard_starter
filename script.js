@@ -9,64 +9,80 @@ By the end of the lab, there shouldn't be any question marks left on the report 
 */
 
 const studentInformation = {
-  name: "FILL_IN_YOUR_NAME_HERE",
-  grade: "FILL_IN_YOUR_GRADE_HERE",
-  advisor: "FILL_IN_YOUR_ADVISOR_HERE",
-  major: "FILL_IN_YOUR_MAJOR_HERE",
-  graduationYear: "FILL_IN_YOUR_GRADUATION_YEAR_HERE",
-  imageUrl: "ADD_A_URL_TO_ANY_IMAGE_HERE",
+    name: "Brian Balthazar",
+    grade: "A",
+    advisor: "Mr. Angellela",
+    major: "CS",
+    graduationYear: "2023",
+    imageUrl: "https://i.pinimg.com/originals/28/e2/bc/28e2bc62966c791432463d3ec59a6eb6.png",
 }
 
 let semester = "Spring Semester"
 
 const studentData = {
-  "Spring Semester": [
-    { code: "LIT 101", name: "English Literature 101", semester: "Spring 2021", credits: 5, grade: "B+" },
-    { code: "CS 50", name: "Intro to Computer Science", semester: "Spring 2021", credits: 5, grade: "A-" },
-    { code: "WD 140", name: "Modern Web Development", semester: "Spring 2021", credits: 5, grade: "A+" },
-    { code: "JS 2.0", name: "Serverside JavaScript", semester: "Spring 2021", credits: 10, grade: "A-" },
-  ],
-  "Fall Semester": [
-    { code: "Math 600", name: "Differential Equations", semester: "Fall 2020", credits: 5, grade: "A-" },
-    { code: "CS 10", name: "Python Programming", semester: "Fall 2020", credits: 5, grade: "A" },
-    { code: "History 99", name: "History of Computers", semester: "Fall 2020", credits: 5, grade: "A-" },
-    { code: "MD 00", name: "Meditation and Mindfullness", semester: "Fall 2020", credits: 5, grade: "A+" },
-  ],
-  "Winter Term": [
-    { code: "PHYS ED", name: "Physical Activity", semester: "Winter 2020", credits: 5, grade: "A-" },
-    { code: "GEN ED", name: "General Education Requirement", semester: "Winter 2020", credits: 5, grade: "A+" },
-  ],
+    "Spring Semester": [
+        { code: "LIT 101", name: "English Literature 101", semester: "Spring 2021", credits: 5, grade: "B+" },
+        { code: "CS 50", name: "Intro to Computer Science", semester: "Spring 2021", credits: 5, grade: "A-" },
+        { code: "WD 140", name: "Modern Web Development", semester: "Spring 2021", credits: 5, grade: "A+" },
+        { code: "JS 2.0", name: "Serverside JavaScript", semester: "Spring 2021", credits: 10, grade: "A-" },
+    ],
+    "Fall Semester": [
+        { code: "Math 600", name: "Differential Equations", semester: "Fall 2020", credits: 5, grade: "A-" },
+        { code: "CS 10", name: "Python Programming", semester: "Fall 2020", credits: 5, grade: "A" },
+        { code: "History 99", name: "History of Computers", semester: "Fall 2020", credits: 5, grade: "A-" },
+        { code: "MD 00", name: "Meditation and Mindfullness", semester: "Fall 2020", credits: 5, grade: "A+" },
+    ],
+    "Winter Term": [
+        { code: "PHYS ED", name: "Physical Activity", semester: "Winter 2020", credits: 5, grade: "A-" },
+        { code: "GEN ED", name: "General Education Requirement", semester: "Winter 2020", credits: 5, grade: "A+" },
+    ],
 }
 
 const gpaPointsLookup = {
-  "A+": 4.0,
-  A: 4.0,
-  "A-": 3.7,
-  "B+": 3.3,
-  B: 3.0,
-  "B-": 2.7,
-  "C+": 2.3,
-  C: 2.0,
-  "C-": 1.7,
-  "D+": 1.3,
-  D: 1.0,
-  "D-": 0.7,
-  F: 0.0,
+    "A+": 4.0,
+    A: 4.0,
+    "A-": 3.7,
+    "B+": 3.3,
+    B: 3.0,
+    "B-": 2.7,
+    "C+": 2.3,
+    C: 2.0,
+    "C-": 1.7,
+    "D+": 1.3,
+    D: 1.0,
+    "D-": 0.7,
+    F: 0.0,
 }
 
 /**
  * QUERY SELECTORS VARIABLES GO HERE
  */
-const dropdown = document.querySelector(".dropdown")
+const dropdown = document.querySelector(".dropdown");
 // ADD more query selectors here
+let std_name = document.querySelector("#student-name");
+let std_advisor = document.querySelector("#student-advisor");
+let std_major = document.querySelector("#student-major");
+let std_grade = document.querySelector("#student-grade-level");
+let img = document.querySelector("#student-image");
+let year = document.querySelector("#student-graduation-year");
+let sem_drop = document.querySelector(".semester-dropdown");
+let sem_drop_head = document.querySelector(".dropdown-button");
+let drop_label = document.querySelector(".dropdown-label");
+let fall_sem = document.querySelector("#fall-semester");
+let spring_sem = document.querySelector("#spring-semester");
+let winter_sem = document.querySelector("#winter-term");
+let card_table = document.querySelector("#report-card-table");
 
 /**
- * Modify the report card to display the correct grade level from the lookup table above.
- *
- * @param {String} studentName - the name of the student
- */
+    *
+    Modify the report card to display the correct grade level from the lookup table above.*
+    *
+    @param { String }
+studentName - the name of the student 
+*/
+
 function updateStudentName(studentName) {
-  // code goes here
+    std_name.innerHTML = studentName;
 }
 
 /**
@@ -75,7 +91,7 @@ function updateStudentName(studentName) {
  * @param {String|Number} studentGradeLevel - the grade level of the student
  */
 function updateStudentGradeLevel(studentGradeLevel) {
-  // code goes here
+    std_grade.innerHTML = studentGradeLevel;
 }
 
 /**
@@ -84,7 +100,7 @@ function updateStudentGradeLevel(studentGradeLevel) {
  * @param {String} studentAdvisor - the advisor of the student
  */
 function updateStudentAdvisor(studentAdvisor) {
-  // code goes here
+    std_advisor.innerHTML = studentAdvisor;
 }
 
 /**
@@ -93,7 +109,7 @@ function updateStudentAdvisor(studentAdvisor) {
  * @param {String} studentMajor - the major of the student
  */
 function updateMajor(studentMajor) {
-  // code goes here
+    std_major.innerHTML = studentMajor;
 }
 
 /**
@@ -102,7 +118,7 @@ function updateMajor(studentMajor) {
  * @param {Number} graduationyear - the year the student graduates
  */
 function updateStudentGraduationYear(graduationyear) {
-  // code goes here
+    year.innerHTML = graduationyear;
 }
 
 /**
@@ -112,27 +128,27 @@ function updateStudentGraduationYear(graduationyear) {
  * @param {String} url - a link to an image
  */
 function updateStudentImage(imageUrl) {
-  // code goes here
+    img.src = imageUrl;
 }
 
 /**
  * This function should run as soon as the page loads and update the correct student info
  */
 function populateStudentInfo({ name, grade, advisor, major, graduationYear, imageUrl }) {
-  updateStudentName(name)
-  updateStudentGradeLevel(grade)
-  updateStudentAdvisor(advisor)
-  updateMajor(major)
-  updateStudentGraduationYear(graduationYear)
-  updateStudentImage(imageUrl)
+    updateStudentName(name)
+    updateStudentGradeLevel(grade)
+    updateStudentAdvisor(advisor)
+    updateMajor(major)
+    updateStudentGraduationYear(graduationYear)
+    updateStudentImage(imageUrl)
 }
 
 /**
  * This function should add a headers row to the report card table
  */
 function addReportCardHeaders() {
-  // update the code here
-  reportCardTable.innerHTML += ``
+    // update the code here
+    reportCardTable.innerHTML += ``
 }
 
 /**
@@ -143,8 +159,8 @@ function addReportCardHeaders() {
  * @param {Number} rowNum
  */
 function addCourseRowToReportCard(course, rowNum) {
-  // update the code here with information about the course passed to this function
-  reportCardTable.innerHTML += `
+    // update the code here with information about the course passed to this function
+    reportCardTable.innerHTML += `
     
   `
 }
@@ -155,10 +171,10 @@ function addCourseRowToReportCard(course, rowNum) {
  * It should call the other functions responsible for creating the necessary HTML
  */
 function updateReportCard() {
-  updateDropdownLabel()
-  reportCardTable.innerHTML = ``
+    updateDropdownLabel()
+    reportCardTable.innerHTML = ``
 
-  // add your code here
+    // add your code here
 
 
 }
@@ -170,7 +186,7 @@ function updateReportCard() {
  * If the dropdown classList doesn't contain the "closed" class, it should add it.
  */
 function toggleDropdown() {
-  // code goes here
+    // code goes here
 }
 
 /**
@@ -178,7 +194,7 @@ function toggleDropdown() {
  * value stored in the `semester` variable.
  */
 function updateDropdownLabel() {
-  // code goes here
+    // code goes here
 }
 
 // Add an event listener for the dropdown button that calls the toggleDropdown button
@@ -188,8 +204,10 @@ function updateDropdownLabel() {
 // call the `updateReportCard` function and toggle the dropdown
 
 /*
-* Add functions here to make it execute as soon as the page loads
-*/
-window.onload = function () {
-  // run your function here to make it execute as soon as the page loads
+ * Add functions here to make it execute as soon as the page loads
+ */
+window.onload = function() {
+    // run your function here to make it execute as soon as the page loads
+    populateStudentInfo(studentInformation);
+    updateReportCard();
 }
