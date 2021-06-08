@@ -149,13 +149,20 @@ function populateStudentInfo({ name, grade, advisor, major, graduationYear, imag
  */
 function addReportCardHeaders() {
     // update the code here
+    /*<
+    style type = "text/css" >
+        h4 {
+            display: flex;
+            flex - direction: row;
+        } <
+        /style>*/
     reportCardTable.innerHTML += `
-    <div class="table-header">
-    <h4>Code</h4>
-    <h4>Name</h4>
-    <h4>Semester</h4>
-    <h4>Credits</h4>
-    <h4>Letter</h4>
+    <div class="table-header table-row">
+    <h4 class="code-col">Code</h4>
+    <h4 class="name-col">Name</h4>
+    <h4 class="sen-col">Semester</h4>
+    <h4 class="credits-col">Credits</h4>
+    <h4 class="letter-col">Letter</h4>
     </div>
     `
 }
