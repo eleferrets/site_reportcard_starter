@@ -71,7 +71,8 @@ let drop_label = document.querySelector(".dropdown-label");
 let fall_sem = document.querySelector("#fall-semester");
 let spring_sem = document.querySelector("#spring-semester");
 let winter_sem = document.querySelector("#winter-term");
-let card_table = document.querySelector("#report-card-table");
+let reportCardTable = document.querySelector("#report-card-table");
+
 
 /**
     *
@@ -148,7 +149,15 @@ function populateStudentInfo({ name, grade, advisor, major, graduationYear, imag
  */
 function addReportCardHeaders() {
     // update the code here
-    reportCardTable.innerHTML += ``
+    reportCardTable.innerHTML += `
+    <div class="table-header">
+    <h4>Code</h4>
+    <h4>Name</h4>
+    <h4>Semester</h4>
+    <h4>Credits</h4>
+    <h4>Letter</h4>
+    </div>
+    `
 }
 
 /**
@@ -161,7 +170,13 @@ function addReportCardHeaders() {
 function addCourseRowToReportCard(course, rowNum) {
     // update the code here with information about the course passed to this function
     reportCardTable.innerHTML += `
-    
+    <div class="table-row">
+    <h4 class="code-col">${course.code}</h4>
+    <h4 class="name-col">${course.name}</h4>
+    <h4 class="sen-col">${course.semester}</h4>
+    <h4 class="credits-col">${course.credits}</h4>
+    <h4 class="letter-col">${course.grade}</h4>
+    </div>
   `
 }
 
@@ -171,11 +186,13 @@ function addCourseRowToReportCard(course, rowNum) {
  * It should call the other functions responsible for creating the necessary HTML
  */
 function updateReportCard() {
-    updateDropdownLabel()
+    updateDropdownLabel();
     reportCardTable.innerHTML = ``
 
     // add your code here
-
+    addReportCardHeaders();
+    // Arrow function to call each course in each semester and add them to the course
+    studentData[semester].forEach((el) => (addCourseRowToReportCard(el, 5)));
 
 }
 
@@ -187,14 +204,36 @@ function updateReportCard() {
  */
 function toggleDropdown() {
     // code goes here
+    if (dropdown.classList.contains("closed")) {
+        dropdown.classList.remove("closed");
+    } else {
+        dropdown.classList.add("closed");
+    }
 }
-
+// Mouse Functions
+sem_drop_head.addEventListener("click", (a) => (toggleDropdown()));
+fall_sem.addEventListener("click", (a) => {
+    semester = "Fall Semester";
+    updateReportCard();
+    toggleDropdown();
+});
+spring_sem.addEventListener("click", (a) => {
+    semester = "Spring Semester";
+    updateReportCard();
+    toggleDropdown();
+});
+winter_sem.addEventListener("click", (a) => {
+    semester = "Winter Term";
+    updateReportCard();
+    toggleDropdown();
+});
 /**
  * This function should update the inner html of the dropdown label to be the current
  * value stored in the `semester` variable.
  */
 function updateDropdownLabel() {
     // code goes here
+    drop_label.innerHTML = semester;
 }
 
 // Add an event listener for the dropdown button that calls the toggleDropdown button
